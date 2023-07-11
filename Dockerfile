@@ -1,7 +1,10 @@
-FROM openjdk:8-alpine
-
-COPY spring-boot-web.jar spring-boot-web.jar
-
-EXPOSE 8080
-
-CMD ["java", "-jar", "spring-boot-web.jar"]
+FROM adoptopenjdk/openjdk11:alpine-jre
+# Refer to Maven build -> finalName
+#ARG JAR_FILE=target/spring-boot-web.jar
+# cd /opt/app
+WORKDIR /opt/app
+ARG JAR_FILE=target/*.jar
+# cp target/spring-boot-web.jar /opt/app/app.jar
+COPY ${JAR_FILE} app.jar
+# java -jar /opt/app/app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
