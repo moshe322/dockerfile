@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk:11-alpine
+FROM adoptopenjdk/openjdk:8-alpine
 # Refer to Maven build -> finalName
 #ARG JAR_FILE=target/spring-boot-web.jar
 # cd /opt/app
